@@ -22,7 +22,7 @@ func write(){
   }
   defer file.Close()
 
-  byteSlice := []byte(getDate() + "\n")
+  byteSlice := []byte("\n\n" + getDate())
   w, err := file.Write(byteSlice)
   if err != nil {
     log.Fatal(err)
