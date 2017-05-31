@@ -6,10 +6,19 @@ import (
   "log"
   "time"
   "path/filepath"
+  "github.com/metakeule/fmtdate"
+  "github.com/robfig/cron"
 )
 
 
 func main() {
+  c := cron.New()
+  c.AddFunc("0 24 20 * * *", drug)
+  c.Start()
+  select{}
+}
+
+func drug() {
   write()
   add()
   commit()
@@ -25,12 +34,12 @@ func write(){
   }
   defer file.Close()
 
-  byteSlice := []byte("\n\n" + getDate())
-  file.Write(byteSlice)
+  file.Write([]byte(getMessage()))
 }
 
-func getDate() string {
-  return time.Now().String()
+func getMessage() string {
+  date := fmtdate.Format("YYYY-MM-DD", time.Now())
+  return date + ": NO DRUG TODAY!"
 }
 
 func add() {
@@ -52,7 +61,7 @@ func commit() {
 func push() {
   cmd := exec.Command("git", "push", "origin", "master:master")
   err := cmd.Run()
-  if err !=nil {
+  if err != nil {
     log.Fatal(err)
   }
 }
