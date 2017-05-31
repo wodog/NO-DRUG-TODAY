@@ -5,10 +5,12 @@ import (
   "os/exec"
   "log"
   "time"
+  "path/filepath"
 )
 
 
 func main() {
+
   write()
   add()
   commit()
@@ -16,18 +18,16 @@ func main() {
 }
 
 func write(){
-  file, err := os.OpenFile("README.md", os.O_APPEND|os.O_WRONLY, 0644)
+  dir, _ := os.Getwd()
+	filePath := filepath.Join(dir, "README.md")
+  file, err := os.OpenFile(filePath, os.O_APPEND|os.O_WRONLY, 0644)
   if err != nil {
     log.Fatal(err)
   }
   defer file.Close()
 
   byteSlice := []byte("\n\n" + getDate())
-  w, err := file.Write(byteSlice)
-  if err != nil {
-    log.Fatal(err)
-  }
-  log.Println(w)
+  file.Write(byteSlice)
 }
 
 func getDate() string {
