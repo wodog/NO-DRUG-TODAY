@@ -12,7 +12,6 @@ import (
 
 
 func main() {
-  drug()
   c := cron.New()
   c.AddFunc("0 22 17 * * *", drug)
   c.Start()
