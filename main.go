@@ -13,9 +13,9 @@ import (
 
 func main() {
   c := cron.New()
-  c.AddFunc("0 24 20 * * *", drug)
+  c.AddFunc("0 0 20 * * *", drug)
   c.Start()
-  select{}
+  for{}
 }
 
 func drug() {
@@ -39,7 +39,7 @@ func write(){
 
 func getMessage() string {
   date := fmtdate.Format("YYYY-MM-DD", time.Now())
-  return date + ": NO DRUG TODAY!"
+  return date + ": NO DRUG TODAY!\n\n"
 }
 
 func add() {
