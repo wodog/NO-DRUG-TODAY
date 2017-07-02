@@ -20,10 +20,19 @@ func main() {
 }
 
 func drug() {
+	pull()
 	write()
 	add()
 	commit()
 	push()
+}
+
+func pull() {
+	cmd := exec.Command("git", "pull")
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func write() {
