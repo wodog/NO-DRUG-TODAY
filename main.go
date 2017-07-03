@@ -8,15 +8,15 @@ import (
 	"time"
 
 	"github.com/metakeule/fmtdate"
-	"github.com/robfig/cron"
 )
 
 func main() {
-	ch := make(chan int)
-	c := cron.New()
-	c.AddFunc("0 22 17 * * *", drug)
-	c.Start()
-	<-ch
+	// ch := make(chan int)
+	// c := cron.New()
+	// c.AddFunc("0 22 17 * * *", drug)
+	// c.Start()
+	// <-ch
+	drug()
 }
 
 func drug() {
