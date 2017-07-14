@@ -6,24 +6,30 @@ import (
 	"os/exec"
 	"path/filepath"
 	"time"
+	"fmt"
 
+	"github.com/robfig/cron"
 	"github.com/metakeule/fmtdate"
 )
 
 func main() {
-	// ch := make(chan int)
-	// c := cron.New()
-	// c.AddFunc("0 22 17 * * *", drug)
-	// c.Start()
-	// <-ch
-	drug()
+	ch := make(chan int)
+	c := cron.New()
+	c.AddFunc("0 22 17 * * *", drug)
+	c.Start()
+	<-ch
 }
 
 func drug() {
+	fmt.Println("pull...")
 	pull()
+	fmt.Println("write...")
 	write()
+	fmt.Println("add...")
 	add()
+	fmt.Println("commit...")
 	commit()
+	fmt.Println("push...")
 	push()
 }
 
