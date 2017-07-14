@@ -21,6 +21,7 @@ func main() {
 }
 
 func drug() {
+	fmt.Println("start")
 	fmt.Println("pull...")
 	pull()
 	fmt.Println("write...")
@@ -31,6 +32,7 @@ func drug() {
 	commit()
 	fmt.Println("push...")
 	push()
+	fmt.Println("finished")
 }
 
 func pull() {
