@@ -13,6 +13,7 @@ import (
 )
 
 func main() {
+	drug()
 	ch := make(chan int)
 	c := cron.New()
 	c.AddFunc("0 22 17 * * *", drug)
