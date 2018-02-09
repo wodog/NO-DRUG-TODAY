@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./git"
+	"github.com/wodog/NO-DRUG-TODAY/git"
 )
 
 func drug() {
