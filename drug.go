@@ -9,5 +9,5 @@ func drug() {
 	write()
 	git.Add()
 	git.Commit()
-	// git.Push()
+	git.Push()
 }

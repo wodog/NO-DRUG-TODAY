@@ -30,7 +30,7 @@ func Push() {
 }
 
 func Pull() {
-	cmd := exec.Command("git", "pull")
+	cmd := exec.Command("git", "pull", "origin", "master:master")
 	err := cmd.Run()
 	if err != nil {
 		log.Fatal(err)
